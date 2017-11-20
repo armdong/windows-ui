@@ -32,7 +32,7 @@ API.createElement = function(list, opts) {
 };
 
 API.removeElement = function(list, element) {
-  list.remove(element);
+  return list.remove(element) !== null ? true : false;
 };
 
 
@@ -65,6 +65,4 @@ API.render = function(list, containerElem) {
     
     containerElem.appendChild(liElem);
   });
-
-  console.log(data);
 };

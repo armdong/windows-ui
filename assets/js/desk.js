@@ -355,9 +355,7 @@
         type: type,
         name: name,
         ext: ext
-      });
-
-      API.render(dataList, containerElem);
+      }) && API.render(dataList, containerElem);
     }
 
     function handle4FileRename(e) {
