@@ -35,6 +35,10 @@ API.removeElement = function(list, element) {
   return list.remove(element) !== null ? true : false;
 };
 
+API.updateElement = function(list, element) {
+  return list.update(element);
+};
+
 
 /*--------------------------------------*\
   Render UI
@@ -61,8 +65,10 @@ API.render = function(list, containerElem) {
 
     liElem.classList.add('icon');
     liElem.classList.add('icon-' + item.type);
-    liElem.innerHTML = '<p>' + item.name + item.ext + '</p>';
+    liElem.innerHTML = '<p class="name">' + item.name + item.ext + '</p>';
     
     containerElem.appendChild(liElem);
   });
+
+  console.log(list.data());
 };

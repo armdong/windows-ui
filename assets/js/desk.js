@@ -230,7 +230,7 @@
     }
     
     // 获取当前鼠标右键时所处的元素，如果为 null，则处于容器空白处
-    function getContextMenuElem() {
+    function getMousePositionElem() {
       var liElems = containerElem.getElementsByClassName('icon');
       var targetElem = [].slice.call(liElems).filter(function(element) {
         var rect = element.getBoundingClientRect();
@@ -282,6 +282,20 @@
       return elem;
     }
 
+    // 选中元素中的文本
+    function selectText(elem) {
+      if (document.selection) {
+        var range = document.body.createTextRange();
+        range.moveToElementText(elem);
+        range.select();
+      } else if (window.getSelection) {
+        var range = document.createRange();
+        range.selectNodeContents(elem);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+      }
+    }
+
 
     /*--------------------------------------*\
       Event handlers
@@ -303,15 +317,26 @@
 
       destroyContextMenuUI();
       
-      var targetElem = getContextMenuElem();
+      var targetElem = getMousePositionElem();
       var menuUI = createContextMenuUI(targetElem);
       menuUI.style.top = mouse.y + 'px';
       menuUI.style.left = mouse.x + 'px';
 
       containerElem.appendChild(menuUI);
     }
+
+    // handler for dblclick
+    function handle4DoubleClick(e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      var targetElem = getMousePositionElem();
+      if (targetElem !== null) {
+        console.log(targetElem);
+      }
+    }
     
-    // handler for addNewFile
+    // handler for add file
     function handle4NewFile(e) {
       var id = containerElem.dataset.id,
         type = this.dataset.type,
@@ -342,6 +367,7 @@
       API.render(dataList, containerElem);
     }
 
+    // handler for remove file
     function handle4FileRemove(e) {
       var id = this.dataset.id,
         pid = this.dataset.pid,
@@ -358,8 +384,42 @@
       }) && API.render(dataList, containerElem);
     }
 
+    // handler for rename file
     function handle4FileRename(e) {
-      console.log(this.dataset);
+      var id = this.dataset.id;
+      var iconElems = containerElem.getElementsByClassName('icon');
+      var editElem = [].slice.call(iconElems).filter(function(elem) {
+        return elem.dataset.id == id;
+      })[0];
+      var updateElem = {
+        id: editElem.dataset.id,
+        pid: editElem.dataset.pid,
+        name: editElem.dataset.name,
+        type: editElem.dataset.type,
+        ext: editElem.dataset.ext
+      };
+      var nameElem = editElem.getElementsByClassName('name')[0];
+      nameElem.contentEditable = true;
+      nameElem.classList.add('edit');
+      nameElem.focus();
+      selectText(nameElem);
+
+      nameElem.onblur = function(e) {
+        var name = this.textContent;
+        if (name == '') {
+          console.log('文件名不能为空');
+          return false;
+        }
+
+        updateElem.name = name;
+        var updateOK = API.updateElement(dataList, updateElem);
+
+        if (updateOK) {
+          this.classList.remove('edit');
+          this.contentEditable = false;
+          API.render(dataList, containerElem);
+        }
+      };
     }
 
     function handle4FileAttr(e) {
@@ -370,30 +430,11 @@
     /*--------------------------------------*\
       Initialization
     \*--------------------------------------*/
-    
-    // 初始化：添加测试数据
-    (function init() {
-      var newElem = API.createElement(dataList, {
-        type: 'folder',
-        name: '编程' 
-      });
-
-      API.createElement(dataList, {
-        pid: newElem.id,
-        type: 'folder',
-        name: '前端开发'
-      });
-
-      API.createElement(dataList, {
-        pid: newElem.id,
-        type: 'folder',
-        name: '后端开发'
-      });
-    })();
 
     // 给容器元素添加右键监听事件
     containerElem.addEventListener('contextmenu', handle4ContextMenu, false);
     containerElem.addEventListener('click', handle4ContainerClick, false);
+    containerElem.addEventListener('dblclick', handle4DoubleClick, false);
     
     // 渲染数据
     API.render(dataList, containerElem);

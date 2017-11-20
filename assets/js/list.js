@@ -98,6 +98,27 @@ function List() {
     var index = this.indexOf(element);
     return this.removeAt(index);
   };
+
+  // 修改列表中的指定元素
+  this.update = function(element) {
+    var current = head,
+      index = 0;
+
+    while (current) {
+      if (element.id === current.element.id) {
+        current.element.name = element.name;
+        current.element.type = element.type;
+        current.element.pid = element.pid;
+        current.element.ext = element.ext;
+
+        return true;
+      }
+      index++;
+      current = current.next;
+    }
+
+    return false;
+  };
   
   // 获取列表中指定元素的索引
   this.indexOf = function(element) {
