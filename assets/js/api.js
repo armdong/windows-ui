@@ -65,7 +65,7 @@ API.render = function(list, containerElem) {
 
     liElem.classList.add('icon');
     liElem.classList.add('icon-' + item.type);
-    liElem.innerHTML = '<p class="name">' + item.name + item.ext + '</p>';
+    liElem.innerHTML = '<p class="name">' + item.name + '</p>';
     
     containerElem.appendChild(liElem);
   });
