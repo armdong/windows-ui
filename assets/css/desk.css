@@ -84,7 +84,7 @@ a {
 .context-menu .menu-item p {
   display: inline-block;
   width: 140px;
-  margin-left: 20px;
+  padding-left: 20px;
   line-height: 30px;
   color: #333;
   cursor: default;

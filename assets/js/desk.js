@@ -338,6 +338,9 @@
     
     // handler for add file
     function handle4NewFile(e) {
+      e.preventDefault();
+      e.stopPropagation();
+
       var id = containerElem.dataset.id,
         type = this.dataset.type,
         ext = this.dataset.ext;
@@ -408,6 +411,21 @@
         var name = this.textContent;
         if (name == '') {
           console.log('文件名不能为空');
+          return false;
+        }
+
+        // 检测是否重命名
+        var isNameExists = API.checkNameExists(dataList, {
+          id: updateElem.id,
+          type: updateElem.type,
+          name: name
+        });
+
+        if (isNameExists) {
+          console.log('文件名已存在');
+          
+          nameElem.focus();
+          selectText(nameElem);
           return false;
         }
 

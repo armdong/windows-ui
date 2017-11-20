@@ -8,6 +8,39 @@ API.newId = function() {
   return _.uniqueId();
 };
 
+API.newName = function(list, type, name) {
+  var index = 1;
+
+  var names = list.data().filter(function(elem) {
+    return elem.type == type;
+  }).map(function(elem) {
+    return elem.name;
+  });
+
+  if (names.length == 0) {
+    return name;
+  }
+
+  while (names.indexOf(name + '(' + index + ')') !== -1) {
+    index++;
+  }
+  return name + '(' + index + ')';
+};
+
+API.checkNameExists = function(list, opts) {
+  var id = opts.id,
+    type = opts.type,
+    name = opts.name;
+
+  var names = list.data().filter(function(elem) {
+    return elem.id !== id && elem.type === type;
+  }).map(function(elem) {
+    return elem.name;
+  });
+
+  return names.indexOf(name) > -1;
+};
+
 /*--------------------------------------*\
   API CRUD Methods
 \*--------------------------------------*/
@@ -16,7 +49,7 @@ API.createElement = function(list, opts) {
   var id = API.newId(),
     pid = opts.pid || '0',
     type = opts.type,
-    name = opts.name,
+    name = API.newName(list, type, opts.name),
     ext = opts.ext || '';
 
   var elem = {
@@ -70,5 +103,5 @@ API.render = function(list, containerElem) {
     containerElem.appendChild(liElem);
   });
 
-  console.log(list.data());
+  // console.log(list.data());
 };
