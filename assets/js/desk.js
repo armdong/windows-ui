@@ -147,9 +147,10 @@
         });
       } else { // 在具体文件或文件夹中右键
         
-        var name = element.dataset.name,
-          id = element.dataset.id,
+        var id = element.dataset.id,
           pid = element.dataset.pid,
+          name = element.dataset.name,
+          type = element.dataset.type,
           ext = element.dataset.ext;
 
         // 添加删除按钮
@@ -167,6 +168,7 @@
             id: id,
             pid: pid,
             name: name,
+            type: type,
             ext: ext
           },
           events: {
@@ -190,6 +192,7 @@
             id: id,
             pid: pid,
             name: name,
+            type: type,
             ext: ext
           },
           events: {
@@ -213,6 +216,7 @@
             id: id,
             pid: pid,
             name: name,
+            type: type,
             ext: ext
           },
           events: {
@@ -339,7 +343,21 @@
     }
 
     function handle4FileRemove(e) {
-      console.log(this.dataset);
+      var id = this.dataset.id,
+        pid = this.dataset.pid,
+        type = this.dataset.type,
+        name = this.dataset.name,
+        ext = this.dataset.ext;
+
+      API.removeElement(dataList, {
+        id: id,
+        pid: pid,
+        type: type,
+        name: name,
+        ext: ext
+      });
+
+      API.render(dataList, containerElem);
     }
 
     function handle4FileRename(e) {

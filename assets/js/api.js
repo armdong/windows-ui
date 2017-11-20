@@ -14,7 +14,7 @@ API.newId = function() {
 
 API.createElement = function(list, opts) {
   var id = API.newId(),
-    pid = opts.pid || 0,
+    pid = opts.pid || '0',
     type = opts.type,
     name = opts.name,
     ext = opts.ext || '';
@@ -29,6 +29,10 @@ API.createElement = function(list, opts) {
 
   list.append(elem);
   return elem;
+};
+
+API.removeElement = function(list, element) {
+  list.remove(element);
 };
 
 
@@ -61,4 +65,6 @@ API.render = function(list, containerElem) {
     
     containerElem.appendChild(liElem);
   });
+
+  console.log(data);
 };

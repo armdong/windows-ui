@@ -105,7 +105,7 @@ function List() {
       index = 0;
 
     while (current) {
-      if (element === current.element) {
+      if (element.id == current.element.id) {
         return index;
       }
       index++;
