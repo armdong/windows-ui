@@ -1,0 +1,403 @@
+.icon {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  background-image: url('../imgs/icons.png');
+  background-repeat: no-repeat;
+}
+
+.icon-folder {
+  background-position: 0px 0px;
+}
+
+.icon-folder-mail {
+  background-position: -114px 0px;
+}
+
+.icon-folder-qq {
+  background-position: -228px 0px;
+}
+
+.icon-folder-wechat {
+  background-position: -342px 0px;
+}
+
+.icon-folder-qqxf {
+  background-position: -456px 0px;
+}
+
+.icon-folder-qqyyb {
+  background-position: -570px 0px;
+}
+
+.icon-doc {
+  background-position: 0px -114px;
+}
+
+.icon-docx {
+  background-position: -114px -114px;
+}
+
+.icon-vsd {
+  background-position: -228px -114px;
+}
+
+.icon-wps {
+  background-position: -342px -114px;
+}
+
+.icon-ppt {
+  background-position: -456px -114px;
+}
+
+.icon-pptx {
+  background-position: -570px -114px;
+}
+
+.icon-dps {
+  background-position: -684px -114px;
+}
+
+.icon-msg {
+  background-position: -798px -114px;
+}
+
+.icon-xls {
+  background-position: -912px -114px;
+}
+
+.icon-xlsx {
+  background-position: -1026px -114px;
+}
+
+.icon-et {
+  background-position: -1140px -114px;
+}
+
+.icon-pdf {
+  background-position: 0px -228px;
+}
+
+.icon-txt {
+  background-position: -114px -228px;
+}
+
+.icon-key {
+  background-position: -228px -228px;
+}
+
+.icon-rp {
+  background-position: -342px -228px;
+}
+
+.icon-numbers {
+  background-position: -456px -228px;
+}
+
+.icon-pages {
+  background-position: -570px -228px;
+}
+
+.icon-keynote {
+  background-position: -684px -228px;
+}
+
+.icon-jpg {
+  background-position: 0px -342px;
+}
+
+.icon-jpeg {
+  background-position: -114px -342px;
+}
+
+.icon-png {
+  background-position: -228px -342px;
+}
+
+.icon-gif {
+  background-position: -342px -342px;
+}
+
+.icon-bmp {
+  background-position: -456px -342px;
+}
+
+.icon-psd {
+  background-position: -570px -342px;
+}
+
+.icon-ai {
+  background-position: -684px -342px;
+}
+
+.icon-eps {
+  background-position: -798px -342px;
+}
+
+.icon-avi {
+  background-position: 0px -456px;
+}
+
+.icon-asf {
+  background-position: -114px -456px;
+}
+
+.icon-mp4 {
+  background-position: -228px -456px;
+}
+
+.icon-mkv {
+  background-position: -342px -456px;
+}
+
+.icon-mov {
+  background-position: -456px -456px;
+}
+
+.icon-mod {
+  background-position: -570px -456px;
+}
+
+.icon-mpe {
+  background-position: -684px -456px;
+}
+
+.icon-3gp {
+  background-position: -798px -456px;
+}
+
+.icon-rmvb {
+  background-position: -912px -456px;
+}
+
+.icon-wmv {
+  background-position: -1026px -456px;
+}
+
+.icon-wmf {
+  background-position: -1140px -456px;
+}
+
+.icon-mpg {
+  background-position: -1254px -456px;
+}
+
+.icon-mpeg {
+  background-position: -1368px -456px;
+}
+
+.icon-rm {
+  background-position: 0px -570px;
+}
+
+.icon-dat {
+  background-position: -114px -570px;
+}
+
+.icon-f4a {
+  background-position: -228px -570px;
+}
+
+.icon-webm {
+  background-position: -342px -570px;
+}
+
+.icon-swf {
+  background-position: -456px -570px;
+}
+
+.icon-flv {
+  background-position: -570px -570px;
+}
+
+.icon-fla {
+  background-position: -684px -570px;
+}
+
+.icon-mp3 {
+  background-position: 0px -684px;
+}
+
+.icon-wma {
+  background-position: -114px -684px;
+}
+
+.icon-wav {
+  background-position: -228px -684px;
+}
+
+.icon-ogg {
+  background-position: -342px -684px;
+}
+
+.icon-acc {
+  background-position: -456px -684px;
+}
+
+.icon-m4a {
+  background-position: -570px -684px;
+}
+
+.icon-wave {
+  background-position: -684px -684px;
+}
+
+.icon-midi {
+  background-position: -798px -684px;
+}
+
+.icon-ape {
+  background-position: -912px -684px;
+}
+
+.icon-aac {
+  background-position: -1026px -684px;
+}
+
+.icon-aiff {
+  background-position: -1140px -684px;
+}
+
+.icon-mid {
+  background-position: -1254px -684px;
+}
+
+.icon-xmf {
+  background-position: -1368px -684px;
+}
+
+.icon-rtttl {
+  background-position: -1482px -684px;
+}
+
+.icon-flac {
+  background-position: 0px -798px;
+}
+
+.icon-amr {
+  background-position: -114px -798px;
+}
+
+.icon-ipa {
+  background-position: 0px -912px;
+}
+
+.icon-apk {
+  background-position: -114px -912px;
+}
+
+.icon-exe {
+  background-position: -228px -912px;
+}
+
+.icon-msi {
+  background-position: -342px -912px;
+}
+
+.icon-bat {
+  background-position: -456px -912px;
+}
+
+.icon-log {
+  background-position: -570px -912px;
+}
+
+.icon-xmin {
+  background-position: -684px -912px;
+}
+
+.icon-htm {
+  background-position: -798px -912px;
+}
+
+.icon-html {
+  background-position: -912px -912px;
+}
+
+.icon-c {
+  background-position: -1026px -912px;
+}
+
+.icon-xml {
+  background-position: -1140px -912px;
+}
+
+.icon-asp {
+  background-position: 0px -1026px;
+}
+
+.icon-chm {
+  background-position: -114px -1026px;
+}
+
+.icon-hlp {
+  background-position: -228px -1026px;
+}
+
+.icon-ttf {
+  background-position: -342px -1026px;
+}
+
+.icon-ttc {
+  background-position: -456px -1026px;
+}
+
+.icon-otf {
+  background-position: -570px -1026px;
+}
+
+.icon-fon {
+  background-position: -684px -1026px;
+}
+
+.icon-bak {
+  background-position: -798px -1026px;
+}
+
+.icon-tmp {
+  background-position: -912px -1026px;
+}
+
+.icon-old {
+  background-position: -1026px -1026px;
+}
+
+.icon-zip {
+  background-position: 0px -1140px;
+}
+
+.icon-7z {
+  background-position: -114px -1140px;
+}
+
+.icon-rar {
+  background-position: -228px -1140px;
+}
+
+.icon-iso {
+  background-position: -342px -1140px;
+}
+
+.icon-ace {
+  background-position: -456px -1140px;
+}
+
+.icon-cab {
+  background-position: -570px -1140px;
+}
+
+.icon-uue {
+  background-position: -684px -1140px;
+}
+
+.icon-jar {
+  background-position: -798px -1140px;
+}
+
+.icon-tar {
+  background-position: -912px -1140px;
+}
+
+.icon-dmg {
+  background-position: -1026px -1140px;
+}
