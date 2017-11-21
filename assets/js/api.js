@@ -21,10 +21,14 @@ API.newName = function(list, type, name) {
     return name;
   }
 
-  while (names.indexOf(name + '(' + index + ')') !== -1) {
-    index++;
+  if (names.indexOf(name) === -1) {
+    return name;
+  } else {
+    while (names.indexOf(name + '(' + index + ')') !== -1) {
+      index++;
+    }
+    return name + '(' + index + ')';
   }
-  return name + '(' + index + ')';
 };
 
 API.checkNameExists = function(list, opts) {
