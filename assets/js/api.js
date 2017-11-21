@@ -45,6 +45,29 @@ API.checkNameExists = function(list, opts) {
   return names.indexOf(name) > -1;
 };
 
+API.convertFloat2Absolute = function(elements) {
+  var positions = [];
+  
+  // 拿到所有文件位置信息
+  elements.forEach(function(element) {
+    var top = element.offsetTop,
+      left = element.offsetLeft;
+
+    positions.push({
+      top: top,
+      left: left
+    });
+  });
+  
+  // 更改成 absolute 布局
+  elements.forEach(function(element, index) {
+    element.style.position = 'absolute';
+    element.style.top = positions[index].top + 'px';
+    element.style.left = positions[index].left + 'px';
+    element.style.margin = '0px';
+  });
+};
+
 /*--------------------------------------*\
   API CRUD Methods
 \*--------------------------------------*/
@@ -83,7 +106,8 @@ API.updateElement = function(list, element) {
 
 API.render = function(list, containerElem) {
   var data = list.data(),
-    id = containerElem.dataset.id || '0';
+    id = containerElem.dataset.id || '0',
+    liElems = [];
 
   var currentLevelData = data.filter(function(item) {
     return item.pid == id;
@@ -105,7 +129,10 @@ API.render = function(list, containerElem) {
     liElem.innerHTML = '<p class="name">' + item.name + '</p>';
     
     containerElem.appendChild(liElem);
+    liElems.push(liElem);
   });
+
+  API.convertFloat2Absolute(liElems);
 
   // console.log(list.data());
 };
