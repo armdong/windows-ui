@@ -64,11 +64,85 @@ API.convertFloat2Absolute = function(elements) {
     element.style.position = 'absolute';
     element.style.top = positions[index].top + 'px';
     element.style.left = positions[index].left + 'px';
+    element.style.zIndex = 9;
     element.style.margin = '0px';
   });
 };
 
-API.enableDrag = function(elements, container) {};
+API.enableDrag = function(elements, container) {
+  elements.forEach(function(element) {
+    API.drag({
+      el: element,
+      box: container,
+      onStart: function() {
+        element.style.zIndex = 99;
+      },
+      onMove: function() {},
+      onEnd: function() {
+        element.style.zIndex = 9;
+      }
+    });
+  });
+};
+
+API.drag = function(opts) {
+  var el = opts.el,
+    box = opts.box,
+    onStart = opts.onStart || null,
+    onMove = opts.onMove || null,
+    onEnd = opts.onEnd || null,
+    mouse = window.utils.captureMouse(box),
+    boxRect = box.getBoundingClientRect(),
+    offsetX = 0,
+    offsetY = 0,
+    isPressed = false;
+
+  el.addEventListener('mousedown', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    isPressed = true;
+    offsetX = mouse.x - el.offsetLeft;
+    offsetY = mouse.y - el.offsetTop;
+
+    onStart && onStart();
+
+    box.addEventListener('mousemove', handle4Move, false);
+    box.addEventListener('mouseup', handle4Up, false);
+  }, false);
+
+  function handle4Move(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    var x = mouse.x - offsetX,
+      y = mouse.y - offsetY;
+
+    if (x < boxRect.left) {
+      x = boxRect.left;
+    } else if (x + el.offsetWidth > boxRect.left + boxRect.width) {
+      x = boxRect.left + boxRect.width - el.offsetWidth;
+    }
+
+    if (y < boxRect.top) {
+      y = boxRect.top;
+    } else if (y + el.offsetHeight > boxRect.top + boxRect.height) {
+      y = boxRect.top + boxRect.height - el.offsetHeight;
+    }
+
+    el.style.left = x + 'px';
+    el.style.top = y + 'px';
+
+    onMove && onMove();
+  }
+
+  function handle4Up(e) {
+    box.removeEventListener('mousemove', handle4Move, false);
+    box.removeEventListener('mouseup', handle4Up, false);
+
+    onEnd && onEnd();
+  }
+};
 
 /*--------------------------------------*\
   API CRUD Methods

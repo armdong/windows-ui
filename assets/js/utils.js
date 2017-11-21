@@ -112,5 +112,3 @@ window.utils.intersects = function(rectA, rectB) {
     rectA.y + rectA.height < rectB.y ||
     rectB.y + rectB.height < rectA.y);
 };
-
-window.utils.drag = function(element) {};
