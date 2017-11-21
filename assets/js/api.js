@@ -68,6 +68,8 @@ API.convertFloat2Absolute = function(elements) {
   });
 };
 
+API.enableDrag = function(elements, container) {};
+
 /*--------------------------------------*\
   API CRUD Methods
 \*--------------------------------------*/
@@ -131,8 +133,12 @@ API.render = function(list, containerElem) {
     containerElem.appendChild(liElem);
     liElems.push(liElem);
   });
-
+  
+  // convert float layout to absolute layout
   API.convertFloat2Absolute(liElems);
+
+  // enable drag
+  API.enableDrag(liElems, containerElem);
 
   // console.log(list.data());
 };
